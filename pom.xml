@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.krams</groupId>
-  <artifactId>spring-social-tutorial</artifactId>
+  <artifactId>dryves</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-social-tutorial Maven Webapp</name>
+  <name>Dryves</name>
   <url>http://maven.apache.org</url>
 
 <properties>
@@ -48,6 +48,7 @@
 	<maven.copy.plugin.version>0.2.3</maven.copy.plugin.version>
 	<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
 	<maven.apt.plugin.version>1.0</maven.apt.plugin.version>
+    <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
 </properties>
   
   <dependencies>
@@ -372,6 +373,14 @@
                 <port>8080</port>
             </configuration>
         </plugin>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<warName>dryvers</warName>
+				</configuration>
+			</plugin>
         
         <!-- Jetty 8 plugin -->
         <plugin>
