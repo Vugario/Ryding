@@ -52,7 +52,7 @@
                 <img th:src="@{/resources/img/logo.png}" alt="Dryves" />
             </div>
             
-            <span th:text="${loggedIn}"></span>
+            <span th:text="${username}"></span>
         </div>
 
         <div th:fragment="menu">
@@ -70,20 +70,26 @@
 
                         <!-- Everything you want hidden at 940px or less, place within here -->
                         <div class="nav-collapse collapse">
-                            
-                            <ul th:if="${loggedIn}" class="nav">
-                                <li><a href="#" th:href="@{/fb/profile}">Facebook Profile</a></li>
-                                <li><a href="#" th:href="@{/tw/profile}">Twitter Profile</a></li>
-                                <li><a href="#" th:href="@{/users}">Manage Users</a></li>
-                                <li><a href="#" th:href="@{/fb/post}">Update FB status</a></li>
-                                <li><a href="#" th:href="@{/tw/post}">Compose a Tweet</a></li>
-                                <li id="last-menu-item"><a href="#" th:href="@{/logout}">Logout</a></li>
-                            </ul>
-                            
-                            <ul th:unless="${loggedIn}" class="nav">
-                                <li><a th:href="@{/login}">Inloggen</a></li>
-                                <li><a th:href="@{/signup}">Registeren</a></li>
-                            </ul>
+							
+							<div th:switch="${loggedIn}"> 
+								<div th:case="${true}">
+									<ul class="nav">
+										<li><a href="#" th:href="@{/fb/profile}">Facebook Profile</a></li>
+										<li><a href="#" th:href="@{/tw/profile}">Twitter Profile</a></li>
+										<li><a href="#" th:href="@{/users}">Manage Users</a></li>
+										<li><a href="#" th:href="@{/fb/post}">Update FB status</a></li>
+										<li><a href="#" th:href="@{/tw/post}">Compose a Tweet</a></li>
+										<li id="last-menu-item"><a href="#" th:href="@{/logout}">Logout</a></li>
+									</ul>
+								</div>
+								
+								<div th:case="${false}">
+									<ul class="nav">
+										<li><a th:href="@{/login}">Inloggen</a></li>
+										<li><a th:href="@{/signup}">Registeren</a></li>
+									</ul>
+								</div>
+							</div>
                             
                         </div>
 

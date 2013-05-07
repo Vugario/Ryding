@@ -13,10 +13,15 @@ public class AbstractController {
 	
     @ModelAttribute("loggedIn")
     public boolean loggedIn() {
-        if( SecurityContextHolder.getContext().getAuthentication().isAuthenticated() )
+        if( SecurityContextHolder.getContext().getAuthentication().isAuthenticated() && !"anonymousUser".equals(SecurityContextHolder.getContext().getAuthentication().getName()) )
             return true;
         
         return false;
+    }
+	
+    @ModelAttribute("username")
+    public String username() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
     
 }
