@@ -51,8 +51,6 @@
             <div id="logo">
                 <img th:src="@{/resources/img/logo.png}" alt="Dryves" />
             </div>
-            
-            <span th:text="${username}"></span>
         </div>
 
         <div th:fragment="menu">
@@ -74,12 +72,36 @@
 							<div th:switch="${loggedIn}"> 
 								<div th:case="${true}">
 									<ul class="nav">
-										<li><a href="#" th:href="@{/fb/profile}">Facebook Profile</a></li>
+										<li><a th:href="@{/}"><i class="icon-search"></i> Zoeken</a></li>
+										<li><a th:href="@{/aanbieden}"><i class="icon-plus"></i> Aanbieden</a></li>
+										<li class="dropdown user-avatar">
+
+											<!-- the dropdown has a custom user-avatar class, this is the small avatar with the badge -->
+
+											<a th:href="@{/fb/profile}" class="dropdown-toggle" data-toggle="dropdown">
+												<span>
+													<img class="menu-avatar" src="http://graph.facebook.com/test/picture" /> 
+													<span> <i class="caret"></i></span>
+												</span>
+											</a>
+
+											<ul class="dropdown-menu">
+												<li><a th:href="@{/fb/profile}">Mijn profiel</a></li>
+												<li><a href="#">Mijn zoekgeschiedenis</a></li>
+												<li><a th:href="@{/fb/profile}">Mijn vrienden</a></li>
+												<li><a th:href="@{/fb/profile}">Mijn geaccepteerde ritten</a></li>
+												<li><a th:href="@{/fb/profile}">Mijn aangeboden ritten</a></li>
+												<li class="divider"></li>
+												<li><a th:href="@{/logout}">Uitloggen</a></li>
+											</ul>
+										</li>
+										
+										<!--<li><a href="#" th:href="@{/fb/profile}">Facebook Profile</a></li>
 										<li><a href="#" th:href="@{/tw/profile}">Twitter Profile</a></li>
 										<li><a href="#" th:href="@{/users}">Manage Users</a></li>
 										<li><a href="#" th:href="@{/fb/post}">Update FB status</a></li>
 										<li><a href="#" th:href="@{/tw/post}">Compose a Tweet</a></li>
-										<li id="last-menu-item"><a href="#" th:href="@{/logout}">Logout</a></li>
+										<li id="last-menu-item"><a href="#" th:href="@{/logout}">Logout</a></li>-->
 									</ul>
 								</div>
 								

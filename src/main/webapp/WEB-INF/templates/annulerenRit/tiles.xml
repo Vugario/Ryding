@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	
+
+    <definition name="annulerenRit" extends="page">
+        <put-attribute name="content" value="/WEB-INF/views/annulerenRit/annulerenRit.jsp" />
+    </definition>
+
+    <definition name="annulerenRitBevestiging" extends="page">
+        <put-attribute name="content" value="/WEB-INF/views/annulerenRit/annulerenRitBevestiging.jsp" />
+    </definition>
+
+    <definition name="annulerenAangebodenRit" extends="page">
+        <put-attribute name="content" value="/WEB-INF/views/annulerenAangebodenRit/annulerenAangebodenRit.jsp" />
+    </definition>
+    
+</tiles-definitions>

@@ -9,7 +9,7 @@ import javax.persistence.Id;
  *
  * @author mennowolvers
  */
-@Entity(name="userconnection")
+@Entity(name="UserConnection")
 public class Userconnection {
 	
 	@Id

@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-	
-<head th:fragment="header">
-    <meta charset="utf-8" />
-	<link rel="stylesheet" href="../../../resources/css/style.css" th:href="@{/resources/css/style.css}" />
-	<title th:text="#{'profile.title.' + ${source}}">Title</title>
-</head>
+<html th:with="title=#{login.title}" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<body>
-	<div class="skin">
-		<div class="content">
-			<div th:include="include :: menu"></div>
-			<div th:include="include :: logo"></div>
-			
+    <head th:substituteby="include :: header"></head>
+
+    <body>
+
+        <div th:include="include :: banner"></div>
+		
+		<div class="container">
 			<div class="profile">
 				<h3 th:text="#{'profile.h3.' + ${source}}">Your Social Media Profile</h3>
 				<div class="pic">
@@ -36,7 +30,7 @@
 				<div th:include="include :: disconnect"></div>
 			</div>
 		</div>
+		
 		<div th:include="include :: footer"></div>
-	</div>
-</body>
+	</body>
 </html>
