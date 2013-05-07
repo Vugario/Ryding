@@ -23,7 +23,7 @@ import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
+public class UserController extends AbstractController {
 	
 	@Autowired
 	private UserRepository repository;

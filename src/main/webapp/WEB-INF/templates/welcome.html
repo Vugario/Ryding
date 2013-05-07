@@ -1,39 +1,32 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-	
-<head>
-    <meta charset="utf-8" />
-	<link rel="stylesheet" href="../../resources/css/style.css" th:href="@{/resources/css/style.css}" />
-	<title th:text="#{welcome.title}">Title</title>
-</head>
+<html th:with="title=#{welcome.title}" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<body>
-	<div class="skin">
-		<div class="content">
-			<div th:include="include :: menu"></div>
-			<div th:include="include :: logo"></div>
-			
-			<div class="welcome">
-				<p>Welcome <span class="authname" th:text="${authname}">user</span> to TestApp! This application will allow you to do the following: </p>
-				<ul>
-					<li>View your Facebook profile</li>
-					<li>View your Twiiter profile</li>
-					<li>Update your Facebook status</li>
-					<li>Tweet a message to Twitter</li>		
-				</ul> 
-				
-				<p>You will need a Facebook or Twitter account to
-				post and access your profile from these social media sites.</p>
-			
-				<p>To know more about this application, please visit the tutorial at
-				<a href="#">Spring Social Tutorial</a>.</p>
-				
-				<p>The GitHub repository is available at
-				<a href="#">spring-social-tutorial</a>.</p>
-			</div>
-		</div>
-		<div th:include="include :: footer"></div>
-	</div>	
-</body>
+    <head th:substituteby="include :: header"></head>
+
+    <body>
+
+        <div th:include="include :: banner"></div>
+
+        <div class="map">
+
+            <div class="container">
+
+                <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 th:text="#{welcome.title}">Welkom bij Dryves</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <p>Welcome <span class="authname" th:text="${authname}">user</span></p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer th:substituteby="include :: footer"></footer>
+    </body>
 </html>

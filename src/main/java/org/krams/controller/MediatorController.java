@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class MediatorController {
+public class MediatorController extends AbstractController {
 
 	@RequestMapping
 	public String getHomePage(ModelMap model) {

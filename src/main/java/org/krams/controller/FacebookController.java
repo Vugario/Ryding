@@ -12,7 +12,7 @@ import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping("/fb")
-public class FacebookController {
+public class FacebookController extends AbstractController {
 	
 	@Autowired
 	private ConnectionRepository connectionRepository;

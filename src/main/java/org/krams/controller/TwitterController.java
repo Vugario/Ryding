@@ -12,7 +12,7 @@ import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping("/tw")
-public class TwitterController {
+public class TwitterController extends AbstractController {
 	
 	@Autowired
 	private ConnectionRepository connectionRepository;

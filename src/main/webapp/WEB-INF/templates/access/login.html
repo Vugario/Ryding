@@ -1,37 +1,60 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>	  <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
-<!--[if IE 7]>		 <html class="no-js lt-ie9 lt-ie8 xmlns="http://www.w3.org/1999/xhtml"" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
-<!--[if IE 8]>		 <html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
-	
-<head th:fragment="header">
-	<meta charset="utf-8" />
-	<link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}" />
-	<link rel="stylesheet" th:href="@{/resources/css/bootstrap-responsive.min.css}" />
-	<title th:text="#{login.title}">Log in met je account</title>
-</head>
+<html th:with="title=#{login.title}" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<body>
-	<div class="skin">
-		<div class="content">
-			<div th:include="include :: banner"></div>
+    <head th:substituteby="include :: header"></head>
 
-			<div class="login">
-				<form action="#" th:action="@{/j_spring_security_check}" method="post" >
-					<fieldset>
-						<label for="j_username" th:text="#{login.username}">Username</label>
-						<input id="j_username" name="j_username" type="text"/>
-						<label for="j_password" th:text="#{login.password}">Password</label>
-						<input id="j_password" name="j_password" type="password"/>
-						<button type="submit" th:text="#{login.button}">Submit</button>
-					</fieldset>
-				</form>
-				<p><a href="#" th:href="@{/signup}" th:text="#{login.noaccount}">No account? Create one now!</a></p>
-			</div>
-			
-			<p class="status" th:if="${not #strings.isEmpty(status)}" th:text="#{'status.' + ${status}}">Status</p>
-		</div>
-		<div th:include="include :: footer"></div>
-	</div>
-</body>
+    <body>
+
+        <div th:include="include :: banner"></div>
+        
+        <div class="map">
+
+            <div class="container">
+
+                <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 th:text="#{login.title}">Log in met je account</h3>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <form class="form-horizontal" action="#" th:action="@{/j_spring_security_check}" method="post">
+
+                            <fieldset>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="j_username" th:text="#{login.username}">Username</label>
+                                    <div class="controls">
+                                        <input id="j_username" name="j_username" type="text"/>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="j_password" th:text="#{login.password}">Password</label>
+                                    <div class="controls">
+                                        <input id="j_password" name="j_password" type="password"/>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button class="btn btn-primary" type="submit" th:text="#{login.button}">Submit</button>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                        </form>
+
+                        <p><a href="#" th:href="@{/signup}" th:text="#{login.noaccount}">No account? Create one now!</a></p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer th:substituteby="include :: footer"></footer>
+    </body>
 </html>

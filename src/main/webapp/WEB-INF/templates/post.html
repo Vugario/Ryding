@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-	
-<head th:fragment="header">
-    <meta charset="utf-8" />
-	<link rel="stylesheet" href="../../resources/css/style.css" th:href="@{/resources/css/style.css}" />
-	<title th:text="#{'post.title.' + ${source}}">Title</title>
-</head>
+<html th:with="title=#{welcome.title}" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<body>
+    <head th:substituteby="include :: header"></head>
+
+    <body>
+
+        <div th:include="include :: banner"></div>
+        
 	<div class="skin">
 		<div class="content">
 			<div th:include="include :: menu"></div>
@@ -25,7 +23,9 @@
 				</form>
 			</div>
 		</div>
-		<div th:include="include :: footer"></div>
+		
 	</div>	
+        
+        <div th:include="include :: footer"></div>
 </body>
 </html>

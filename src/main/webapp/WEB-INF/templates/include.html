@@ -1,61 +1,120 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-	
-<head th:fragment="header">
-    <meta charset="utf-8" />
-	<link rel="stylesheet" href="../../resources/css/style.css" th:href="@{/resources/css/style.css}" />
-	<title>Include</title>
-</head>
+      xmlns:th="http://www.thymeleaf.org">
 
-<body>
-	<div th:fragment="banner">
-		<div class="menu">
-			<ul>
-				<li id="last-menu-item">&nbsp;</li>
-			</ul>
-		</div>
-		<div id="banner">
-			<h1 th:text="#{app.name}">App Name</h1>
-			<h2>Socialize your app</h2>
-			<hr/>
-		</div>
-	</div>
-	
-	<div th:fragment="logo">
-		<div id="logo">
-			<h1 th:text="#{app.name}">App Name</h1>
-			<h2>Socialize your app</h2>
-			<hr/>
-		</div>
-	</div>
-	
-	<div th:fragment="menu">
-		<div class="menu">
-			<ul>
-				<li><a href="#" th:href="@{/fb/profile}">Facebook Profile</a></li>
-				<li><a href="#" th:href="@{/tw/profile}">Twitter Profile</a></li>
-				<li><a href="#" th:href="@{/users}">Manage Users</a></li>
-				<li><a href="#" th:href="@{/fb/post}">Update FB status</a></li>
-				<li><a href="#" th:href="@{/tw/post}">Compose a Tweet</a></li>
-				<li id="last-menu-item"><a href="#" th:href="@{/logout}">Logout</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div th:fragment="disconnect">
-		<form id="disconnect" action="#" th:action="@{#{'disconnect.url.' + ${source}}}" method="post">
-			<button type="submit" th:text="#{'disconnect.button.' + ${source}}">Disconnect from Social</button>	
-			<input type="hidden" name="_method" value="delete" />
-		</form>
-	</div>
-	
-	<div th:fragment="footer">
-		<div class="footer">
-			<hr/>
-			<span>TestApp by </span>
-			<a href="http://krams915.blogspot.com">http://krams915.blogspot.com</a>
-		</div>
-	</div>
-</body>
+    <head th:fragment="header">
+        <meta charset="utf-8" />
+
+        <title th:text="${title}">Dryves</title>
+
+        <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/resources/css/bootstrap-responsive.min.css}" />
+        <link rel="stylesheet" th:href="@{/resources/css/style.css}" />
+
+        <script type="text/javascript" th:src="@{/resources/js/jquery.js}"></script>
+        <script type="text/javascript" th:src="@{/resources/js/bootstrap.min.js}"></script>
+        <script type="text/javascript" th:src="@{/resources/js/script.js}"></script>
+    </head>
+
+    <body>
+        <div th:fragment="banner">
+            
+            <div class="notification alert alert-info" th:if="${not #strings.isEmpty(status)}">
+                <div class="container" style="text-align: center">
+                    <span class="status" th:text="#{'status.' + ${status}}">Status</span>
+                </div>
+            </div>
+
+
+            <header>
+
+                <div class="container clearfix">
+
+                    <div class="pull-left">
+
+                        <div th:include="include :: logo"></div>
+
+                    </div>
+
+                    <div class="pull-right">
+
+                        <div th:include="include :: menu"></div>
+
+                    </div>
+
+                </div>
+
+            </header>
+        </div>
+
+        <div th:fragment="logo">
+            <div id="logo">
+                <img th:src="@{/resources/img/logo.png}" alt="Dryves" />
+            </div>
+            
+            <span th:text="${loggedIn}"></span>
+        </div>
+
+        <div th:fragment="menu">
+
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+
+                        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+
+                        <!-- Everything you want hidden at 940px or less, place within here -->
+                        <div class="nav-collapse collapse">
+                            
+                            <ul th:if="${loggedIn}" class="nav">
+                                <li><a href="#" th:href="@{/fb/profile}">Facebook Profile</a></li>
+                                <li><a href="#" th:href="@{/tw/profile}">Twitter Profile</a></li>
+                                <li><a href="#" th:href="@{/users}">Manage Users</a></li>
+                                <li><a href="#" th:href="@{/fb/post}">Update FB status</a></li>
+                                <li><a href="#" th:href="@{/tw/post}">Compose a Tweet</a></li>
+                                <li id="last-menu-item"><a href="#" th:href="@{/logout}">Logout</a></li>
+                            </ul>
+                            
+                            <ul th:unless="${loggedIn}" class="nav">
+                                <li><a th:href="@{/login}">Inloggen</a></li>
+                                <li><a th:href="@{/signup}">Registeren</a></li>
+                            </ul>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div th:fragment="disconnect">
+            <form id="disconnect" action="#" th:action="@{#{'disconnect.url.' + ${source}}}" method="post">
+                <button type="submit" th:text="#{'disconnect.button.' + ${source}}">Disconnect from Social</button>	
+                <input type="hidden" name="_method" value="delete" />
+            </form>
+        </div>
+
+        <div th:fragment="footer">
+            
+            <div class="footer hidden-phone">
+
+                <div class="container">
+
+                    <img src="http://placehold.it/50x50" align="left" />
+                    <strong>1234 KG bespaard</strong>
+
+                    <img src="http://placehold.it/50x50" align="left" />
+                    <strong>12343 Dryves</strong>
+
+                </div>
+                
+            </div>
+        </div>
+    </body>
 </html>
